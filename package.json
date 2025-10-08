@@ -6,9 +6,10 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "export": "next export"
+
   },
-  "export": "next export",
   "dependencies": {
     "appwrite": "^21.1.0",
     "next": "15.5.3",
