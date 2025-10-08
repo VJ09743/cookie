@@ -2,7 +2,8 @@
 // Tener = { id: number, cps: number, createdAt: number }
 
 "use client";
-import { useEffect, useRef, useState } from "react";
+import {useEffect, useRef, useState} from "react";
+import {AppwriteException} from "appwrite";
 
 export default function Home() {
     const [score, setScore] = useState(0);
@@ -10,6 +11,7 @@ export default function Home() {
     const [tenersprice, settenerprice] = useState(10);
     const tenerIdRef = useRef(0);
     const lastUpdateRef = useRef(Date.now());
+    const [buttonOffset, setButtonOffset] = useState({ top: 0, left: -250 });
     useEffect(() => {
         const interval = setInterval(() => {
             const now = Date.now();
@@ -23,22 +25,32 @@ export default function Home() {
     }, [teners]);
 
 
+
     const buyTener = () => {
         if (score >= 10) {
             setScore(prev => prev - tenersprice);
             setTeners(prev => [
                 ...prev,
-                { id: tenerIdRef.current++, cps: 1, createdAt: Date.now() },
+                {id: tenerIdRef.current++, cps: 0.4, createdAt: Date.now()},
             ]);
             settenerprice(prev => prev + 10);
         }
     };
-
+    const click = () => {
+        setScore(prev => prev + 1);
+        setButtonOffset({
+            top: Math.floor(Math.random() * 100),
+            left: Math.floor(Math.random() * screen.width - screen.width/2)
+        });
+    }
     return (
-        <main className="flex justify-center items-center h-screen w-screen gap-6 bg-gradient-to-br from-blue-800 to-green-800">
+        <main
+            className="flex justify-center items-center h-screen w-screen gap-6 bg-gradient-to-br from-blue-800 to-green-800">
             <button
-                className="bg-neutral-400/20 border border-neutral-400/20  backdrop-blur-sm hover:bg-blue-950/20 text-3xl text-white px-8 py-3 rounded-full transition-colors duration-100"
-                onClick={() => setScore(prev => prev + 1)}
+                className="absolute bg-neutral-400/20 border border-neutral-400/20 backdrop-blur-sm hover:bg-blue-950/20 text-3xl text-white px-8 py-3 rounded-full transition-colors duration-100"
+                style={{ transform: `translate(${buttonOffset.left}px, ${buttonOffset.top}px)` }}
+                onClick={() => click()}
+                id="ook"
             >
                 Click
             </button>
@@ -48,7 +60,7 @@ export default function Home() {
                 className={`text-3xl px-8 py-3 rounded-full transition-colors duration-100
           ${score >= tenersprice
                     ? "bg-neutral-400/20 hover:bg-blue-950/20 text-white "
-                    : (teners.length >= 1?"bg-neutral-400/60 text-white cursor-not-allowed":"bg-gray-700 text-gray-700 cursor-not-allowed")
+                    : (teners.length >= 1 ? "bg-neutral-400/60 text-white cursor-not-allowed" : "bg-gray-700 text-gray-700 cursor-not-allowed")
                 }`}
                 onClick={buyTener}
             >
@@ -58,7 +70,7 @@ export default function Home() {
             <div className="text-3xl text-center">
                 <p>Score: {Math.floor(score)}</p>
                 <p>Teners: {teners.length}</p>
-                <p>CPS: {teners.reduce((sum, t) => sum + t.cps, 0)}</p>
+                <p>CPS: {Math.round((teners.reduce((sum, t) => sum + t.cps, 0)) * 10) / 10}</p>
             </div>
         </main>
     );
