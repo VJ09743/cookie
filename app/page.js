@@ -4,7 +4,7 @@ import NaviBar from "@/app/navigation";
 export default async function Home() {
     // ✅ Initialize Appwrite client
     const client = new Client()
-        .setEndpoint("https://fra.cloud.appwrite.io/v1")
+        .setEndpoint("https://api.jorithm.net/v1")
         .setProject("68e6c97500379b85edde");
 
     const databases = new TablesDB(client);
