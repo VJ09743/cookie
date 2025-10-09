@@ -3,8 +3,10 @@
 
 "use client";
 import {useEffect, useRef, useState} from "react";
+import { Client, ID, TablesDB } from "appwrite";
 import {AppwriteException} from "appwrite";
 import NaviBar from "@/app/navigation";
+
 export default function Home() {
     const [score, setScore] = useState(0);
     const [teners, setTeners] = useState([]);
@@ -23,6 +25,8 @@ export default function Home() {
 
         return () => clearInterval(interval);
     }, [teners]);
+
+
 
 
 
