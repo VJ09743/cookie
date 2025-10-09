@@ -4,7 +4,7 @@ const confbut = "group-hover:text-3xl text-1xl px-4 hover:bg-neutral-400/30  gro
 export default function NaviBar() {
 
     return(
-        <nav className=" hover:bg-blue-950/20 group hover:p-5 p-2 transition-all duration-150 rounded-full backdrop-blur-sm top-5 left-5 right-5  fixed z-50 bg-black/20">
+        <nav className=" flex hover:bg-blue-950/20 group hover:p-5 p-2 gap-2 justify-center hover:gap-6 transition-all duration-100  rounded-full backdrop-blur-sm top-5 hover:w-full fixed z-50 bg-black/20">
             {linkBut("/", "Home")}
             {linkBut("/games/cookie", "Cookie")}
         </nav>
@@ -14,7 +14,6 @@ export default function NaviBar() {
 function linkBut(hrd, text) {
     return(<Link href={hrd}>
         <button className={confbut}>{text}</button>
-        {linkBut("href")}
     </Link>)
 
 }

@@ -6,48 +6,11 @@ import {useEffect, useRef, useState} from "react";
 import {AppwriteException} from "appwrite";
 import NaviBar from "@/app/navigation";
 export default function Home() {
-    const [score, setScore] = useState(0);
-    const [teners, setTeners] = useState([]);
-    const [tenersprice, settenerprice] = useState(10);
-    const tenerIdRef = useRef(0);
-    const lastUpdateRef = useRef(Date.now());
-    const [buttonOffset, setButtonOffset] = useState({ top: 0, left: -250 });
-    useEffect(() => {
-        const interval = setInterval(() => {
-            const now = Date.now();
-            const delta = (now - lastUpdateRef.current) / 1000;
-            lastUpdateRef.current = now;
-
-            setScore(prev => prev + teners.reduce((sum, t) => sum + t.cps, 0) * delta);
-        }, 100);
-
-        return () => clearInterval(interval);
-    }, [teners]);
-
-
-
-    const buyTener = () => {
-        if (score >= 10) {
-            setScore(prev => prev - tenersprice);
-            setTeners(prev => [
-                ...prev,
-                {id: tenerIdRef.current++, cps: 0.4, createdAt: Date.now()},
-            ]);
-            settenerprice(prev => prev + 10);
-        }
-    };
-    const click = () => {
-        setScore(prev => prev + 1);
-        setButtonOffset({
-            top: Math.floor(Math.random() * 100),
-            left: Math.floor(Math.random() * screen.width - screen.width/2)
-        });
-    }
     return (
-        <div className="flex bg-gradient-to-br from-blue-800 to-green-800  p-4.5 justify-center items-center ">
+        <div className="flex bg-gradient-to-br from-blue-800 to-green-800 h-screen  justify-center  ">
         <NaviBar/>
         <main
-            className={"text-white bg-neutral-400/50"}>
+            className={"text-white bg-neutral-400/20 h-fit rounded-3xl p-10 mt-25 w-95/100"}>
             Hello
         </main>
         </div>

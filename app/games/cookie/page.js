@@ -11,7 +11,7 @@ export default function Home() {
     const [tenersprice, settenerprice] = useState(10);
     const tenerIdRef = useRef(0);
     const lastUpdateRef = useRef(Date.now());
-    const [buttonOffset, setButtonOffset] = useState({ top: 0, left: -250 });
+    const [buttonOffset, setButtonOffset] = useState({ top: -100, left: 0 });
     useEffect(() => {
         const interval = setInterval(() => {
             const now = Date.now();
