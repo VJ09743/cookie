@@ -45,11 +45,37 @@ export default function Home() {
     }
     return (
         <div className="flex bg-gradient-to-br from-blue-800 to-green-800  p-4.5 justify-center items-center ">
-        <NaviBar/>
-        <main
-            className={"text-white bg-neutral-400/50"}>
-            Hello
-        </main>
+            <NaviBar/>
+            <main
+                className="flex justify-center items-center gap-6 h-screen w-screen">
+
+                <button
+                    className="absolute outline-white/60 bg-neutral-400/20 border border-neutral-400/20 backdrop-blur-sm hover:bg-blue-950/20 text-3xl text-white px-8 py-3 rounded-full transition-colors duration-100"
+                    style={{ transform: `translate(${buttonOffset.left}px, ${buttonOffset.top}px)` }}
+                    onClick={() => click()}
+                    id="ook"
+                >
+                    Click
+                </button>
+
+                <button
+                    disabled={score < tenersprice}
+                    className={`text-3xl px-8 py-3 rounded-full transition-colors duration-100 outline-white/60
+          ${score >= tenersprice
+                        ? "bg-neutral-400/20 hover:bg-blue-950/20 text-white "
+                        : (teners.length >= 1 ? "bg-neutral-400/60 text-white cursor-not-allowed" : "bg-gray-700 text-gray-700 cursor-not-allowed")
+                    }`}
+                    onClick={buyTener}
+                >
+                    Buy {tenersprice}
+                </button>
+
+                <div className="text-3xl text-center">
+                    <p>Score: {Math.floor(score)}</p>
+                    <p>Teners: {teners.length}</p>
+                    <p>CPS: {Math.round((teners.reduce((sum, t) => sum + t.cps, 0)) * 10) / 10}</p>
+                </div>
+            </main>
         </div>
     );
 }

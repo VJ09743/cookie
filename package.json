@@ -6,12 +6,11 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint",
-    "export": "next export"
-
+    "lint": "eslint"
   },
   "dependencies": {
     "appwrite": "^21.1.0",
+    "bootstrap": "^5.3.8",
     "next": "15.5.3",
     "react": "19.1.0",
     "react-dom": "19.1.0"
