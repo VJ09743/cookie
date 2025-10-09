@@ -4,6 +4,8 @@
 "use client";
 import {useEffect, useRef, useState} from "react";
 import {AppwriteException} from "appwrite";
+import { Client, ID, TablesDB } from "appwrite";
+
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
