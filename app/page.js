@@ -1,38 +1,39 @@
-// just document the object structure in comments
-// Tener = { id: number, cps: number, createdAt: number }
-
-"use client";
-import {useEffect, useRef, useState} from "react";
-import {AppwriteException} from "appwrite";
-import { Client, ID, TablesDB } from "appwrite";
-
-const client = new Client()
-    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
-    .setProject('<PROJECT_ID>');
-
-const tablesDB = new TablesDB(client);
-
-const promise = tablesDB.getRow({
-    databaseId: '68e7b2ac00260e13d0ae',
-    tableId: 'text',
-    rowId: ID.unique(),
-    data: { pagenum: 1 }
-});
-
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
+import {Client, TablesDB} from "appwrite";
 import NaviBar from "@/app/navigation";
-export default function Home() {
+
+export default async function Home() {
+    // ✅ Initialize Appwrite client
+    const client = new Client()
+        .setEndpoint("https://fra.cloud.appwrite.io/v1")
+        .setProject("68e6c97500379b85edde");
+
+    const databases = new TablesDB(client);
+
+    // ✅ Wait for data before rendering
+    let rep;
+    try {
+        rep = await databases.listRows({
+            databaseId: "68e7b2ac00260e13d0ae",
+            tableId: "text",
+            queries: [], // optional
+        });
+    } catch (error) {
+        console.error(error);
+        rep = { rows: [] };
+    }
+
     return (
-        <div className="flex bg-gradient-to-br from-blue-800 to-green-800 h-screen  justify-center  ">
-        <NaviBar/>
-        <main
-            className={"text-white bg-neutral-400/20 h-fit rounded-3xl p-10 mt-25 w-95/100"}>
-            {promise}
-        </main>
+        <div className="flex bg-gradient-to-br from-blue-800 to-green-800 h-screen justify-center">
+            <NaviBar />
+            <main className="text-white bg-neutral-400/20 h-fit rounded-3xl p-10 mt-25 w-95/100 overflow-auto">
+                {rep.rows?.length > 0 ? (
+                    rep.rows.map((doc) => (
+                        <text key={doc.$id} className="mb-2">{doc.text}</text>
+                    ))
+                ) : (
+                    <pre>No data found.</pre>
+                )}
+            </main>
         </div>
     );
 }

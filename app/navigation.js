@@ -1,4 +1,4 @@
-import {router} from "next/client";
+
 import Link from "next/link";
 const confbut = "group-hover:text-3xl text-1xl px-4 hover:bg-neutral-400/30  group-hover:px-8 py-3 rounded-full  bg-neutral-400/20 text-white/60 group-hover:text-white transition-all duration-100";
 export default function NaviBar() {
