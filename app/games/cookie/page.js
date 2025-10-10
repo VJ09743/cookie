@@ -63,17 +63,17 @@ export default function Home() {
         ref={mainRef}>
         <NaviBar/>
         <Image
+            src = {"https://api.jorithm.net/v1/storage/buckets/68e8ec10003cd417e364/files/cookieimg/view?project=68e6c97500379b85edde&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbklkIjoiNjhlOTFjODEzYTVhYjc5MzIyMjUiLCJyZXNvdXJjZUlkIjoiNjhlOGVjMTAwMDNjZDQxN2UzNjQ6Y29va2llaW1nIiwicmVzb3VyY2VUeXBlIjoiZmlsZXMiLCJyZXNvdXJjZUludGVybmFsSWQiOiI0MzM5NjozIiwiaWF0IjoxNzYwMTA3NjQ5fQ.PiM1xnOqZS5kz1Zje4IGRuTCX0TscP8fPE5qsTUtIp0"}
             //className="absolute outline-white/60 bg-neutral-400/20 border border-neutral-400/20 backdrop-blur-sm hover:bg-blue-950/20 text-3xl text-white px-8 py-3 rounded-full transition-colors duration-100"
             style={{
                 top: `${buttonOffset.top}px`, left: `${buttonOffset.left}px`
             }}
-            className={"absolute cursor-pointer z-10"}
+            className={"absolute cursor-pointer"}
             onClick={() => click()}
             id="ook"
             alt=""
             width={100}
-            height={100}
-            scr = "https://api.jorithm.net/v1/storage/buckets/68e8ec10003cd417e364/files/68e90f1f003bfdaf381c/view?project=68e6c97500379b85edde&mode=admin">
+            height={100}>
         </Image>
         <main
 
