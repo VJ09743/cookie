@@ -3,9 +3,10 @@
 
 "use client";
 import {useEffect, useRef, useState} from "react";
-import { Client, ID, TablesDB } from "appwrite";
+import {Client, ID, TablesDB} from "appwrite";
 import {AppwriteException} from "appwrite";
 import NaviBar from "@/app/navigation";
+import Image from "next/image";
 
 export default function Home() {
     const [score, setScore] = useState(0);
@@ -13,7 +14,9 @@ export default function Home() {
     const [tenersprice, settenerprice] = useState(10);
     const tenerIdRef = useRef(0);
     const lastUpdateRef = useRef(Date.now());
-    const [buttonOffset, setButtonOffset] = useState({ top: -100, left: 0 });
+    const [buttonOffset, setButtonOffset] = useState({top: window.innerHeight/2 -150, left: window.innerWidth/2 -50});
+    const mainRef = useRef(null);
+
     useEffect(() => {
         const interval = setInterval(() => {
             const now = Date.now();
@@ -27,59 +30,69 @@ export default function Home() {
     }, [teners]);
 
 
-
-
-
     const buyTener = () => {
         if (score >= 10) {
             setScore(prev => prev - tenersprice);
-            setTeners(prev => [
-                ...prev,
-                {id: tenerIdRef.current++, cps: 0.4, createdAt: Date.now()},
-            ]);
+            setTeners(prev => [...prev, {id: tenerIdRef.current++, cps: 0.4, createdAt: Date.now()},]);
             settenerprice(prev => prev + 10);
         }
     };
     const click = () => {
         setScore(prev => prev + 1);
-        setButtonOffset({
-            top: Math.floor(Math.random() * 100),
-            left: Math.floor(Math.random() * screen.width - screen.width/2)
-        });
-    }
-    return (
-        <div className="flex bg-gradient-to-br from-blue-800 to-green-800  p-4.5 justify-center items-center ">
-            <NaviBar/>
-            <main
-                className="flex justify-center items-center gap-6 h-screen w-screen">
 
-                <button
-                    className="absolute outline-white/60 bg-neutral-400/20 border border-neutral-400/20 backdrop-blur-sm hover:bg-blue-950/20 text-3xl text-white px-8 py-3 rounded-full transition-colors duration-100"
-                    style={{ transform: `translate(${buttonOffset.left}px, ${buttonOffset.top}px)` }}
-                    onClick={() => click()}
-                    id="ook"
-                >
-                    Click
-                </button>
+        // Get the bounding box of the container
+        const rect = mainRef.current?.getBoundingClientRect();
+        if (!rect) return;
 
-                <button
-                    disabled={score < tenersprice}
-                    className={`text-3xl px-8 py-3 rounded-full transition-colors duration-100 outline-white/60
-          ${score >= tenersprice
-                        ? "bg-neutral-400/20 hover:bg-blue-950/20 text-white "
-                        : (teners.length >= 1 ? "bg-neutral-400/60 text-white cursor-not-allowed" : "bg-gray-700 text-gray-700 cursor-not-allowed")
-                    }`}
-                    onClick={buyTener}
-                >
-                    Buy {tenersprice}
-                </button>
+        const imgWidth = 100;
+        const imgHeight = 100;
 
-                <div className="text-3xl text-center">
-                    <p>Score: {Math.floor(score)}</p>
-                    <p>Teners: {teners.length}</p>
-                    <p>CPS: {Math.round((teners.reduce((sum, t) => sum + t.cps, 0)) * 10) / 10}</p>
-                </div>
-            </main>
-        </div>
-    );
+        // Compute random position *inside* the main container
+        const newTop = Math.random() * (rect.height - imgHeight);
+        const newLeft = Math.random() * (rect.width - imgWidth);
+
+        // Update relative to parent container
+        setButtonOffset({top: newTop, left: newLeft});
+    };
+
+    return (<div
+        className="flex bg-gradient-to-br from-blue-800 to-green-800 p-4.5  w-screen h-screen justify-center items-center relative"
+        ref={mainRef}>
+        <NaviBar/>
+        <Image
+            //className="absolute outline-white/60 bg-neutral-400/20 border border-neutral-400/20 backdrop-blur-sm hover:bg-blue-950/20 text-3xl text-white px-8 py-3 rounded-full transition-colors duration-100"
+            style={{
+                top: `${buttonOffset.top}px`, left: `${buttonOffset.left}px`
+            }}
+            className={"absolute cursor-pointer"}
+            onClick={() => click()}
+            id="ook"
+            alt=""
+            width={100}
+            height={100}
+            src="https://api.jorithm.net/v1/storage/buckets/68e8ec10003cd417e364/files/68e8ec4d001842b83eb6/preview?project=68e6c97500379b85edde&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbklkIjoiNjhlOGVjZGEwODU4Mjc2ZTMyY2YiLCJyZXNvdXJjZUlkIjoiNjhlOGVjMTAwMDNjZDQxN2UzNjQ6NjhlOGVjNGQwMDE4NDJiODNlYjYiLCJyZXNvdXJjZVR5cGUiOiJmaWxlcyIsInJlc291cmNlSW50ZXJuYWxJZCI6IjQzMzk2OjEiLCJpYXQiOjE3NjAwOTU0NTB9.mvaFL-pDo1sEmbKeFKqzLr0NCnh3mHi3a6Bu_IJi3Kw">
+
+
+        </Image>
+        <main
+
+            className="flex justify-center relative items-center gap-6 ">
+
+
+            <button
+                disabled={score < tenersprice}
+                className={`text-3xl px-8 py-3 rounded-full transition-colors duration-100 outline-white/60
+          ${score >= tenersprice ? "bg-neutral-400/20 hover:bg-blue-950/20 text-white " : (teners.length >= 1 ? "bg-neutral-400/60 text-white cursor-not-allowed" : "bg-gray-700 select-none text-gray-700 cursor-not-allowed")}`}
+                onClick={buyTener}
+            >
+                Buy {tenersprice}
+            </button>
+
+            <div className="text-3xl text-center">
+                <p>Score: {Math.floor(score)}</p>
+                <p>Teners: {teners.length}</p>
+                <p>CPS: {Math.round((teners.reduce((sum, t) => sum + t.cps, 0)) * 10) / 10}</p>
+            </div>
+        </main>
+    </div>);
 }

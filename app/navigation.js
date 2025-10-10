@@ -9,7 +9,7 @@ export default function NaviBar() {
             {linkBut("/", "Home")}
             <details className="relative">
                 <summary className={confbut + " cursor-pointer list-none"}>
-                    Games
+                    Games▽
                 </summary>
 
                 <div className="absolute left-0 mt-2 items-center gap-6 not-group-hover:collapse bg-black/20 rounded-lg shadow-lg flex flex-col p-2 z-50">
