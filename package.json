@@ -11,9 +11,11 @@
   "dependencies": {
     "appwrite": "^21.1.0",
     "bootstrap": "^5.3.8",
+    "mobile-detect": "^1.4.5",
     "next": "15.5.3",
     "react": "19.1.0",
     "react-bootstrap": "^2.10.10",
+    "react-device-detect": "^2.2.3",
     "react-dom": "19.1.0"
   },
   "devDependencies": {
