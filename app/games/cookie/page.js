@@ -8,6 +8,7 @@ import {AppwriteException} from "appwrite";
 import NaviBar from "@/app/navigation";
 import Image from "next/image";
 import {waitAtLeastOneReactRenderTask} from "next/dist/lib/scheduler";
+import fet from "@/app/fetch";
 
 export default function Home() {
     const [score, setScore] = useState(0);
@@ -57,13 +58,19 @@ export default function Home() {
         // Update relative to parent container
         setButtonOffset({top: newTop, left: newLeft});
     };
+    const [imgSrc, setImgSrc] = useState("https://api.jorithm.net/v1/storage/buckets/68e8ec10003cd417e364/files/cookieimg/view?project=68e6c97500379b85edde&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbklkIjoiNjhlOTFjODEzYTVhYjc5MzIyMjUiLCJyZXNvdXJjZUlkIjoiNjhlOGVjMTAwMDNjZDQxN2UzNjQ6Y29va2llaW1nIiwicmVzb3VyY2VUeXBlIjoiZmlsZXMiLCJyZXNvdXJjZUludGVybmFsSWQiOiI0MzM5NjozIiwiaWF0IjoxNzYwMTM3NDg2fQ.qOOOtPHZg18GokKGbSLBQCokbCsD1VHmBsrs69r3mzg");
 
+    useEffect(() => {
+        fet(21).then((url) => {
+            if (url) setImgSrc(url);
+        });
+    }, []);
     return (<div
         className="flex bg-gradient-to-br from-blue-800 to-green-800 p-4.5  w-screen h-screen justify-center items-center relative"
         ref={mainRef}>
         <NaviBar/>
         <Image
-            src = {"https://api.jorithm.net/v1/storage/buckets/68e8ec10003cd417e364/files/cookieimg/view?project=68e6c97500379b85edde&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbklkIjoiNjhlOTFjODEzYTVhYjc5MzIyMjUiLCJyZXNvdXJjZUlkIjoiNjhlOGVjMTAwMDNjZDQxN2UzNjQ6Y29va2llaW1nIiwicmVzb3VyY2VUeXBlIjoiZmlsZXMiLCJyZXNvdXJjZUludGVybmFsSWQiOiI0MzM5NjozIiwiaWF0IjoxNzYwMTA3NjQ5fQ.PiM1xnOqZS5kz1Zje4IGRuTCX0TscP8fPE5qsTUtIp0"}
+            src = {imgSrc}
             //className="absolute outline-white/60 bg-neutral-400/20 border border-neutral-400/20 backdrop-blur-sm hover:bg-blue-950/20 text-3xl text-white px-8 py-3 rounded-full transition-colors duration-100"
             style={{
                 top: `${buttonOffset.top}px`, left: `${buttonOffset.left}px`
