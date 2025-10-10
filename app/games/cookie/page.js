@@ -7,6 +7,7 @@ import {Client, ID, TablesDB} from "appwrite";
 import {AppwriteException} from "appwrite";
 import NaviBar from "@/app/navigation";
 import Image from "next/image";
+import {waitAtLeastOneReactRenderTask} from "next/dist/lib/scheduler";
 
 export default function Home() {
     const [score, setScore] = useState(0);
@@ -14,9 +15,11 @@ export default function Home() {
     const [tenersprice, settenerprice] = useState(10);
     const tenerIdRef = useRef(0);
     const lastUpdateRef = useRef(Date.now());
-    const [buttonOffset, setButtonOffset] = useState({top: window.innerHeight/2 -150, left: window.innerWidth/2 -50});
+    const [buttonOffset, setButtonOffset] = useState({top: 0, left: 0});
     const mainRef = useRef(null);
-
+    useEffect(() => {
+        (r => setButtonOffset({top: window.innerHeight/2 -150, left: window.innerWidth/2 -50}));
+    }, []);
     useEffect(() => {
         const interval = setInterval(() => {
             const now = Date.now();
