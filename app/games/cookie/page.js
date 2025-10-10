@@ -68,7 +68,7 @@ export default function Home() {
             style={{
                 top: `${buttonOffset.top}px`, left: `${buttonOffset.left}px`
             }}
-            className={"absolute cursor-pointer z-10"}
+            className={"absolute cursor-pointer"}
             onClick={() => click()}
             id="ook"
             alt=""
