@@ -73,9 +73,7 @@ export default function Home() {
             alt=""
             width={100}
             height={100}
-            src="https://api.jorithm.net/v1/storage/buckets/68e8ec10003cd417e364/files/68e8ec4d001842b83eb6/preview?project=68e6c97500379b85edde&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbklkIjoiNjhlOGVjZGEwODU4Mjc2ZTMyY2YiLCJyZXNvdXJjZUlkIjoiNjhlOGVjMTAwMDNjZDQxN2UzNjQ6NjhlOGVjNGQwMDE4NDJiODNlYjYiLCJyZXNvdXJjZVR5cGUiOiJmaWxlcyIsInJlc291cmNlSW50ZXJuYWxJZCI6IjQzMzk2OjEiLCJpYXQiOjE3NjAwOTU0NTB9.mvaFL-pDo1sEmbKeFKqzLr0NCnh3mHi3a6Bu_IJi3Kw">
-
-
+            scr = "https://api.jorithm.net/v1/storage/buckets/68e8ec10003cd417e364/files/68e90f1f003bfdaf381c/view?project=68e6c97500379b85edde&mode=admin">
         </Image>
         <main
 
