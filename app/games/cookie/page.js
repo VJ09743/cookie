@@ -18,7 +18,7 @@ export default function Home() {
     const [buttonOffset, setButtonOffset] = useState({top: 0, left: 0});
     const mainRef = useRef(null);
     useEffect(() => {
-        (r => setButtonOffset({top: window.innerHeight/2 -150, left: window.innerWidth/2 -50}));
+        setButtonOffset({top: window.innerHeight/2 -150, left: window.innerWidth/2 -50});
     }, []);
     useEffect(() => {
         const interval = setInterval(() => {
@@ -67,7 +67,7 @@ export default function Home() {
             style={{
                 top: `${buttonOffset.top}px`, left: `${buttonOffset.left}px`
             }}
-            className={"absolute cursor-pointer"}
+            className={"absolute cursor-pointer z-10"}
             onClick={() => click()}
             id="ook"
             alt=""
