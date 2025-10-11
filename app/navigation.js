@@ -1,11 +1,9 @@
 
 import Link from "next/link";
-import MobileDetect from 'mobile-detect';
-import { headers } from "next/headers";
 const confbut = "group-hover:text-3xl text-1xl px-4 hover:bg-neutral-400/30  group-hover:px-8 py-3 rounded-full z-51 bg-neutral-400/20 text-white/60 group-hover:text-white transition-all duration-100";
 import { NextRequest, NextResponse, userAgent } from 'next/server'
 
-export  default async function NaviBar({request: NextRequest}) {
+export  default async function NaviBar({request = NextRequest}) {
     const { device } = userAgent(request)
     const viewport = device.type || 'desktop'
     let isDesktop = (viewport === 'desktop')
