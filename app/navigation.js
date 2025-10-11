@@ -21,7 +21,7 @@ export async function getServerSideProps(context) {
 export default function NaviBar({ isDesktop }) {
 
     return(
-        <nav className=" flex hover:bg-black/25 group hover:p-5 p-2 gap-2 justify-center hover:gap-6 transition-all duration-100  rounded-full backdrop-blur-sm top-5 hover:w-98/100 fixed z-50 bg-black/20">
+        <nav className={` flex bg-black/25 group hover:p-5 p-2 gap-2 justify-center hover:gap-6 transition-all duration-100  rounded-full backdrop-blur-sm top-5 hover:w-98/100 fixed z-50  ${isDesktop?`not-hover:bg-black/20`:``}`}>
             {linkBut("/", "Home")}
             <details className="relative">
                 <summary className={confbut + " cursor-pointer list-none"}>
