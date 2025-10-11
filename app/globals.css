@@ -3,7 +3,7 @@
 :root {
 
     --background: linear-gradient(to bottom right, #193cb8, #016630);
-  --foreground: #171717;
+  --foreground: linear-gradient(to bottom right, #193cb8, #016630);
 }
 
 @theme inline {
@@ -13,11 +13,7 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground: #ededed;
-  }
-}
+
 
 body {
   background: var(--background);
