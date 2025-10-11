@@ -1,5 +1,8 @@
 import NaviBar from "@/app/navigation";
 import fet from "./fetch.js";
+import MobileDetect from "mobile-detect";
+
+
 
 export default async function Home() {
     const rep = await fet(1); // ✅ Await the data
