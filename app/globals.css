@@ -23,6 +23,9 @@
 html {
     background: var(--background);
     overscroll-behavior: none;
+    background-size: cover;
+    background-attachment: fixed;
+    overflow: hidden;
 }
 body {
   background: transparent;
