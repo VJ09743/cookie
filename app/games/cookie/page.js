@@ -68,6 +68,7 @@ export default function Home() {
     return (<div
         className="flex bg-gradient-to-br from-blue-800 to-green-800 p-4.5  w-screen h-screen justify-center items-center relative"
         ref={mainRef}>
+        <title>Jorithm.net Cookie Clicker</title>
         <NaviBar/>
         <Image
             src = {imgSrc}
