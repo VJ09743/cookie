@@ -1,4 +1,6 @@
 // fetch.js
+
+import 'server-only'
 import { Client, TablesDB, Query } from "appwrite";
 
 export default async function fet(pagenumval) {

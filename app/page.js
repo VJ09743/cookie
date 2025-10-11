@@ -7,7 +7,7 @@ export default async function Home() {
     return (
 
         <div className="flex bg-gradient-to-br from-blue-800 to-green-800 h-screen justify-center">
-            <title>Jorithm.net</title>
+
             <NaviBar />
             <main className="text-white bg-neutral-400/20 h-fit rounded-3xl p-10 mt-25 w-95/100 overflow-auto">
                 {rep}
