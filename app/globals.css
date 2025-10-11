@@ -4,7 +4,6 @@
 
     --background: linear-gradient(to bottom right, #193cb8, #016630);
   --foreground: linear-gradient(to bottom right, #193cb8, #016630);
-env(safe-area-cover)
 }
 
 @theme inline {
