@@ -26,7 +26,7 @@ html {
     background-size: cover;
     background-repeat: no-repeat;
     overscroll-behavior: none;
-    touch-action: none; /* prevents pinch zoom on some browsers */
+
 }
 body {
   background: transparent;
