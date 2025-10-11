@@ -58,7 +58,7 @@ export default function ClientCookie({imgSrc}) {
 
 
     return (<div
-        className="flex bg-gradient-to-br from-blue-800 to-green-800 p-4.5  w-screen h-screen justify-center items-center relative"
+        className="flex p-4.5  w-screen h-screen justify-center items-center relative"
         ref={mainRef}>
         <NaviBar/>
         <Image
