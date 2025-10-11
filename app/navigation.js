@@ -11,7 +11,7 @@ export default  function NaviBar() {
     let isDesktop = (!isMobile && !isTablet);
     return(
         <nav className={` flex bg-black/30 group hover:p-5 p-2 gap-2 justify-items-center justify-center hover:gap-6 transition-all duration-100  rounded-full backdrop-blur-sm top-5 hover:w-98/100 fixed z-50  ${isDesktop?`not-hover:bg-black/15`:``}`}>
-            {linkBut("/", (isDesktop?"Dek":"Monb"))}
+            {linkBut("/", "Home")}
             <details className="relative">
                 <summary className={confbut + " cursor-pointer list-none"}>
                     Games▽

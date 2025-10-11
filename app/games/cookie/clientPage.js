@@ -76,7 +76,7 @@ export default function ClientCookie({imgSrc}) {
         </Image>
         <main
 
-            className="flex justify-center relative items-center gap-6 ">
+            className="flex justify-center relative  items-center gap-6 ">
 
 
             <button
