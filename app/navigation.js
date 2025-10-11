@@ -2,7 +2,7 @@
 import Link from "next/link";
 import MobileDetect from 'mobile-detect';
 
-const confbut = "group-hover:text-3xl text-1xl px-4 hover:bg-neutral-400/30  group-hover:px-8 py-3 rounded-full  bg-neutral-400/20 text-white/60 group-hover:text-white transition-all duration-100";
+const confbut = "group-hover:text-3xl text-1xl px-4 hover:bg-neutral-400/30  group-hover:px-8 py-3 rounded-full z-51 bg-neutral-400/20 text-white/60 group-hover:text-white transition-all duration-100";
 export async function getServerSideProps(context) {
     const userAgent = context.req.headers['user-agent'] || '';
     const md = new MobileDetect(userAgent);
@@ -28,7 +28,7 @@ export default function NaviBar({ isDesktop }) {
                     Games▽
                 </summary>
 
-                <div className={`absolute mt-2 items-center gap-6 left-1/2 -translate-x-1/2 bg-black/20 rounded-lg shadow-lg flex flex-col p-2 z-51 ${isDesktop?``:`not-group-hover:collapse`}`}>
+                <div className={`absolute mt-2 items-center gap-6 left-1/2 -translate-x-1/2 bg-black/20 rounded-lg shadow-lg flex flex-col p-2 z-52 ${isDesktop?``:`not-group-hover:collapse`}`}>
                     {linkBut("/games/cookie", "Clicker")}
                 </div>
             </details>
