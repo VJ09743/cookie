@@ -1,14 +1,17 @@
-
+"use client"
 import Link from "next/link";
-import {cookies} from "next/headers";
+
+import MobileDetect from "mobile-detect";
 const confbut = "group-hover:text-3xl text-1xl px-4 hover:bg-neutral-400/30  group-hover:px-8 py-3 rounded-full z-51 bg-neutral-400/20 text-white/60 group-hover:text-white transition-all duration-100";
-export  default async function NaviBar() {
-    let cookiestore = await cookies();
-    let useragent = cookiestore.get("device")?.value
-    let isDesktop = (useragent === "desktop")
+export default  function NaviBar() {
+
+    const md = new MobileDetect(navigator.userAgent);
+    const isMobile = !!md.mobile();
+    const isTablet = !!md.tablet();
+    let isDesktop = (!isMobile && !isTablet);
     return(
         <nav className={` flex bg-black/25 group hover:p-5 p-2 gap-2 justify-items-center justify-center hover:gap-6 transition-all duration-100  rounded-full backdrop-blur-sm top-5 hover:w-98/100 fixed z-50  ${isDesktop?``:`not-hover:bg-black/15`}`}>
-            {linkBut("/", useragent)}
+            {linkBut("/", (isDesktop?"Dek":"Monb"))}
             <details className="relative">
                 <summary className={confbut + " cursor-pointer list-none"}>
                     Games▽
