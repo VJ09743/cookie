@@ -1,14 +1,15 @@
-
-import "./clientPage.js"
-import ClientCookie from './clientPage';
+"use server"
+import ClientCookie from "@/app/games/cookie/clientPage";
 import fet from "@/app/fetch";
+import NaviBar from "@/app/navigation";
+
 export default async function CookiePage() {
     let imgSrc = await fet(21)
     return (
-        <ClientCookie imgSrc={imgSrc}/>
+        <div
+            className="flex p-0 w-screen h-screen justify-center items-center relative">
+        <NaviBar/>
+        <ClientCookie imgSrc={imgSrc}>  </ClientCookie>
+        </div>
     )
 }
-export const metadata = {
-    title: "Jorithm Cookie Clicker",
-    description: "A personal project"
-};

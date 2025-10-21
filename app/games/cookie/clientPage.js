@@ -3,7 +3,7 @@
 
 "use client";
 import {useEffect, useRef, useState} from "react";
-import NaviBar from "@/app/navigation";
+
 import Image from "next/image";
 
 export default function ClientCookie({imgSrc}) {
@@ -60,7 +60,6 @@ export default function ClientCookie({imgSrc}) {
     return (<div
         className="flex p-4.5  w-screen h-screen justify-center items-center relative"
         ref={mainRef}>
-        <NaviBar/>
         <Image
             src = {imgSrc}
             //className="absolute outline-white/60 bg-neutral-400/20 border border-neutral-400/20 backdrop-blur-sm hover:bg-blue-950/20 text-3xl text-white px-8 py-3 rounded-full transition-colors duration-100"

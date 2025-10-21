@@ -1,6 +1,6 @@
+"use server"
 import NaviBar from "@/app/navigation";
 import fet from "./fetch.js";
-import MobileDetect from "mobile-detect";
 
 
 
